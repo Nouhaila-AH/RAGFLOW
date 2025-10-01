@@ -100,7 +100,7 @@ ollama pull bge-m3
 ollama list
 ```
 
-### ⬇️ Add Models to the App
+###  Add Models to the App
 
 * Base URL for the app:
 
