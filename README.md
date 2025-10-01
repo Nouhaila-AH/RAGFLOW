@@ -78,11 +78,11 @@ docker compose -f docker-compose.yml up -d
 
 **Ollama** provides open-source LLM chat models and embeddings.
 
-### ⬇️ Download Ollama
+###  Download Ollama
 
 [Download here!](https://ollama.com/download)
 
-### ⬇️ Install Chat & Embedding Models
+###  Install Chat & Embedding Models
 
 (In CMD, you can choose another integrated LLM in Ollama)
 
@@ -94,7 +94,7 @@ ollama pull llama3.2
 ollama pull bge-m3
 ```
 
-### ⬇️ Check Installation
+###  Check Installation
 
 ```bash
 ollama list
