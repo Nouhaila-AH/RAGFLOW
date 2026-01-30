@@ -107,8 +107,25 @@ ollama list
 ```
 http://host.docker.internal:11434/
 ```
-6️⃣ **Rebuild after code changes**
-* docker compose down
-* export DOCKER_BUILDKIT=1
-* docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
-* docker compose up -d
+
+### 6️⃣ Rebuild After Code Changes
+
+When code changes are made, the Docker image must be rebuilt to apply the updates.
+
+#### 1. Stop and remove existing containers
+    docker compose down
+
+#### 2. Enable Docker BuildKit (recommended)
+    export DOCKER_BUILDKIT=1   # if not already enabled
+
+> On Windows (PowerShell):
+    $env:DOCKER_BUILDKIT=1
+
+#### 3. Rebuild the Docker image
+    docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
+
+#### 4. Recreate and start the containers
+    docker compose up -d
+
+✅ The application will now run with the latest code changes.
+
