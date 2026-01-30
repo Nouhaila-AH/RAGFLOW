@@ -107,3 +107,8 @@ ollama list
 ```
 http://host.docker.internal:11434/
 ```
+6️⃣ **Rebuild after code changes**
+* docker compose down
+* export DOCKER_BUILDKIT=1
+* docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
+* docker compose up -d
