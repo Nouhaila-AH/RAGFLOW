@@ -118,9 +118,6 @@ When code changes are made, the Docker image must be rebuilt to apply the update
 #### 2. Enable Docker BuildKit (recommended)
     export DOCKER_BUILDKIT=1   # if not already enabled
 
-> On Windows (PowerShell):
-    $env:DOCKER_BUILDKIT=1
-
 #### 3. Rebuild the Docker image
     docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
 
