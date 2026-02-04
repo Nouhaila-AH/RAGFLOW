@@ -1,5 +1,5 @@
-# RAGFLOW
-What is RAGFLOW?
+# ENSSUP RAG
+What is ENSSUP RAG?
 A advanced search app to help users of the equivalence platform get easy access to information about diplomas and their equivalence. This project is a Generative AI based system including RAG and advanced AI models for relevant information retrieval.
 
 ## 🛠️ Get Started!
@@ -62,7 +62,7 @@ docker compose -f docker-compose.yml up -d
   /_/ |_|/_/  |_|\____//_/    /_/ \____/ |__/|__/
 ```
 
-4️⃣ **Access RAGFLOW**
+4️⃣ **Access ENSSUP RAG**
 
 * Enter the **IP address** in your browser and log in to your account.(usually :http://127.0.0.1)
 
@@ -118,8 +118,9 @@ When code changes are made, the Docker image must be rebuilt to apply the update
 #### 2. Enable Docker BuildKit (recommended)
     export DOCKER_BUILDKIT=1   # if not already enabled
 
-#### 3. Rebuild the Docker image
-    docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
+#### 3. Rebuild the Docker image 
+      - docker build --no-cache -t infiniflow/ragflow:new .
+     or - docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
 
 #### 4. Recreate and start the containers
     docker compose up -d
