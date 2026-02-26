@@ -116,7 +116,7 @@ When code changes are made, the Docker image must be rebuilt to apply the update
     docker compose down
 
 #### 2. Enable Docker BuildKit (recommended)
-    export DOCKER_BUILDKIT=1   # if not already enabled
+    set DOCKER_BUILDKIT=1   # if not already enabled
 
 #### 3. Rebuild the Docker image 
       - docker build --no-cache -t infiniflow/ragflow:new .
