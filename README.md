@@ -107,23 +107,45 @@ ollama list
 ```
 http://host.docker.internal:11434/
 ```
+### 6️⃣ Development Workflow & Code Changes
 
-### 6️⃣ Rebuild After Code Changes
+There are two scenarios depending on what you changed.
 
-When code changes are made, the Docker image must be rebuilt to apply the updates.
+---
 
-#### 1. Stop and remove existing containers
+#### 🔁 Scenario A — Python Code Changes (Fast, No Rebuild Needed)
+Thanks to volume mounts, changes to `api/` or `rag/` are reflected immediately without rebuilding the image.
+
+##### 1. Edit your local files
+Make your changes in `C:\ragflow\api\` or `C:\ragflow\rag\`
+
+##### 2. Restart the ragflow container
+    docker compose restart ragflow
+
+✅ Your changes are live instantly. No rebuild needed.
+
+---
+
+#### 🔨 Scenario B — Full Rebuild Required
+Only needed when you change the `Dockerfile`, `requirements.txt`, frontend (`web/`), or system-level configuration.
+
+##### 1. Stop and remove existing containers
     docker compose down
 
-#### 2. Enable Docker BuildKit (recommended)
-    set DOCKER_BUILDKIT=1   # if not already enabled
+##### 2. Enable Docker BuildKit (recommended)
+    set DOCKER_BUILDKIT=1
 
-#### 3. Rebuild the Docker image 
-      - docker build --no-cache -t infiniflow/ragflow:new .
-     or - docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:local .
+##### 3. Rebuild the Docker image
+    docker build --no-cache -t infiniflow/ragflow:new .
+or
+    docker build --progress=plain -f Dockerfile -t infiniflow/ragflow:new .
 
-#### 4. Recreate and start the containers
+##### 4. Recreate and start the containers
     docker compose up -d
 
-✅ The application will now run with the latest code changes.
+✅ The application will now run with the latest changes.
+
+---
+
+> ⚠️ Do **not** mount `../web:/ragflow/web` — it overwrites the pre-built frontend and breaks the app.
 
